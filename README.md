@@ -5,8 +5,7 @@
 Clone the repo and install dependencies:
 
 ```bash
-git clone --depth 1 --branch main https://github.com/electron-react-boilerplate/electron-react-boilerplate.git your-project-name
-cd your-project-name
+git clone --depth 1 --branch main https://github.com/rilexus/london-wallet.git
 npm install
 ```
 
