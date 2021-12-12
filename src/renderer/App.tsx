@@ -1,18 +1,36 @@
-import { MemoryRouter as Router, Switch, Route } from 'react-router-dom';
+import { FC } from 'react';
+import { MemoryRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
-import { Hello, Home } from './views';
+import { Home, ImportWallet } from './views';
 import { ThemeProvider } from './theme';
+import { WalletProvider } from './libs/wallet';
 
-export default function App() {
+const Provider: FC = ({ children }) => {
+  return (
+    <ThemeProvider>
+      <WalletProvider>{children}</WalletProvider>
+    </ThemeProvider>
+  );
+};
+
+function App() {
   return (
     <div>
-      <ThemeProvider>
-        <Router>
-          <Switch>
-            <Route path="/" component={Home} />
-          </Switch>
-        </Router>
-      </ThemeProvider>
+      <Router>
+        <Link to="/import">Import</Link>
+        <Switch>
+          <Route path="/import" component={ImportWallet} />
+          <Route path="/" component={Home} />
+        </Switch>
+      </Router>
     </div>
   );
 }
+
+export default () => {
+  return (
+    <Provider>
+      <App />
+    </Provider>
+  );
+};

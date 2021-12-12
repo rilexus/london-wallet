@@ -8,7 +8,6 @@ const ThemeProvider: FC<{ theme?: any /* TODO: type this */ }> = ({
   theme,
   children,
 }) => {
-  //
   return (
     <StyledThemeProvider theme={defaultTheme || theme}>
       <NormalizeCSS />

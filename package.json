@@ -16,6 +16,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "ethers": "^5.5.2",
     "react-transitions-library": "^1.2.3",
     "styled-components": "^5.3.3",
     "electron-debug": "^3.2.0",
