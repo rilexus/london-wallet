@@ -1,0 +1,28 @@
+import { ThemeI } from './Theme.types';
+
+const access = (
+  path: string /* key.path.to.object.value */,
+  object: { [key: string]: object }
+): any => {
+  // Gets value from object by given path.
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  const value = path.split('.').reduce((value, key) => value[key], object);
+  if (!value) {
+    // eslint-disable-next-line no-console
+    console.warn(`Value is undefined for path: "${path}"!`);
+  }
+  return value;
+};
+
+const accessTheme = (stylePatch: string, themePath: string) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return ({ theme }: { theme: ThemeI }) =>
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    access(stylePatch, access(themePath, theme));
+};
+
+export { accessTheme };
